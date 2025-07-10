@@ -1,7 +1,3 @@
-
-print("Loading get_scrapeops_url from utils.py")
-
-
 from Helpers.config import API_KEY
 
 # Import the urlencode function to build a URL query string
