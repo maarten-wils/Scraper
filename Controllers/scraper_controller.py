@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 # Main function to search for products on Amazon
 
-def search_products(product_name: str, page_number: int=1, location:str="us", retries: int=2):
+def search_products(product_name: str, page_number: int=1, location:str="us", retries: int=2, data_pipeline=None):
     scraped_products = []   # List to store succesfully scraped products
     attempts = 0            # Counter for retry attempts
     success = False         # Flag to indicate if scraping was successful
@@ -93,7 +93,7 @@ def search_products(product_name: str, page_number: int=1, location:str="us", re
                     rating = rating,
                     is_sponsored = is_sponsored  
                 )
-                scraped_products.append(product)
+                data_pipeline.add_data(product)
             
             success = True # Mark scraping as succesful
 
