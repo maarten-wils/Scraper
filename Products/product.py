@@ -1,7 +1,3 @@
-
-print("Loading ScrapedProduct from product.py")
-
-
 # import dataclass decorator
 from dataclasses import dataclass, fields
 

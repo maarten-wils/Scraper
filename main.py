@@ -1,7 +1,7 @@
 from Controllers.scraper_controller import search_products
 
 
-PRODUCTS = ["MAC"]
+PRODUCTS = ["Mortal Kombat"]
 MAX_RETRIES = 3
 
 for product in PRODUCTS:
