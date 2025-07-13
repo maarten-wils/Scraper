@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 # Main function to search for products on Amazon
 
-def search_products(product_name: str, page_number: int=1, location:str="us", retries: int=2, data_pipeline=None):
+def search_products(product_name: str, page_number: int=1, location:str="be", retries: int=2, data_pipeline=None):
     scraped_products = []   # List to store succesfully scraped products
     attempts = 0            # Counter for retry attempts
     success = False         # Flag to indicate if scraping was successful
@@ -20,7 +20,7 @@ def search_products(product_name: str, page_number: int=1, location:str="us", re
     while attempts < retries and not success:
         try:
             # Construct the Amazon search URL 
-            search_url = f"https://www.amazon.com/s?k={product_name}&page={page_number}"
+            search_url = f"https://www.amazon.com.be/s?k={product_name}&page={page_number}"
             logger.info(f" Fetching: {search_url}")
 
             # Send HTTP GET request to the search URL
