@@ -3,6 +3,7 @@ import pandas as pd         # Pandas for reading and displaying CSV data
 import os
 from Controllers.scraper_controller import search_products
 from Pipelines.data_pipeline import DataPipeline
+from Agents.Agent_feedback import recommend_best_deal_with_ai
 
 
 # Set up the Streamlit app configuration
@@ -30,3 +31,14 @@ if st.button("Scrape"):
 
     except ValueError as ve:
         st.error(f"Error: {ve}") 
+
+st.markdown("---")
+
+if product_name and os.path.exists(f"{product_name}.csv"):
+    st.markdown('<div class="section-title">🤖 Ask the AI agent for the best deal</div>', unsafe_allow_html=True)
+
+    if st.button("🧠 Recommend the best product"):
+        with st.spinner("The AI agent is thinking..."):
+            product, reason = recommend_best_deal_with_ai(f"{product_name}.csv")
+            st.success(f"🌟 **Recommended product:** {product}")
+            st.info(f"💬 **Why:** {reason}")
